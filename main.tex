@@ -1,0 +1,35 @@
+\RequirePackage{fix-cm}
+\documentclass[11pt] {report}
+
+\input{preamble.tex}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\def\title{Seed Incubation Plant}
+
+\subfileinclude{front_matter.tex}
+
+\subfileinclude{abstract.tex}
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\clearpage
+
+\pagenumbering{arabic}
+
+%Seed Incubation Plant: An Overview%
+\subfileinclude{chapter_01/chapter.tex}
+
+%Before We Begin%
+\subfileinclude{chapter_02/chapter.tex}
+
+% %References%
+% \subfileinclude{chapter_15/chapter.tex}
+
+\end{document}
