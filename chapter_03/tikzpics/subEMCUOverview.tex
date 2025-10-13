@@ -1,0 +1,355 @@
+\def\absInnerPad{0.75}
+\def\absOuterPad{0.75}
+\def\absIOOuterPad{0.5}
+
+\def\absMuxBoardWidth{3.25}
+\def\absMainBoardWidth{5}
+\def\absRelayBoardWidth{5}
+\def\absRelayDaughterBoardWidth{3.25}
+\def\absIICBoardWidth{3}
+
+\def\absMuxBoardHeight{3}
+\def\absMainBoardHeight{3}
+\def\absRelayBoardHeight{3}
+\def\absIICBoardHeight{2}
+
+
+\subtikzpicturedef{subEMCUOverview} {
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+
+    \subFigBase {#1-figBase} {#1-origin} {origin}
+
+    \draw
+    node (#1-sensors) [
+        absIOBlock,
+    ] {
+        \texttt{SENSOR INPUT}
+    }
+
+    (#1-sensors.south)
+    node (#1-sensorTrigger) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{SENSOR TRIGGER}
+    }
+
+    (#1-sensorTrigger.south)
+    node (#1-feedback) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{FEEDBACK}
+    }
+
+    (#1-feedback.south)
+    ++(0, -1.0)
+    node (#1-exhaustPanels) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{EXHAUST PANELS}
+    }
+
+    (#1-exhaustPanels.south)
+    node (#1-exhaustFans) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{EXHAUST FANS}
+    }
+
+    (#1-exhaustFans.south)
+    node (#1-hatchPanels) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{HATCH PANELS}
+    }
+
+    (#1-hatchPanels.south)
+    node (#1-peltiers) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{PELTIERS}
+    }
+
+    (#1-peltiers.south)
+    ++(0, -1.0)
+    node (#1-lights) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{LIGHTS}
+    }
+
+    (#1-lights.south)
+    node (#1-fans) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{FANS}
+    }
+
+    (#1-fans.south)
+    node (#1-humidifiers) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{HUMIDIFIERS}
+    }
+
+    (#1-humidifiers.south)
+    node (#1-boardEnable) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{BOARD ENABLE}
+    }
+
+    ;
+
+    %% IO right vert
+
+    \draw
+    (#1-sensors.west) ++(-0.5, 0) coordinate (#1-ioRightVert)
+    (#1-ioRightVert) ++(-3.5, 0) coordinate (#1-ioLeftVert)
+    (#1-ioLeftVert) ++(-0.75, 0) coordinate (#1-ioLeftMostVert)
+
+    (#1-exhaustPanels.north west -| #1-ioLeftMostVert) ++(-{(\absRelayBoardWidth + (2 * \absRelayDaughterBoardWidth)) - (4 * \absInnerPad)}, 0)
+    coordinate (#1-tmp)
+    ;
+
+    \innerEnclosureNode {#1-outerRelayBoard} {#1-peltiers.south west -| #1-ioLeftMostVert} {#1-tmp}
+
+    \draw
+    (#1-tmp) ++(\absInnerPad, -\absInnerPad) coordinate (#1-tmp1)
+    ++(\absRelayBoardWidth, -\absRelayBoardHeight) coordinate (#1-tmp2)
+    ;
+
+    \finishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{REL 01}}
+
+    \draw
+    (#1-tmp2) ++(\absInnerPad, 0) coordinate (#1-tmp1)
+    ++(\absRelayDaughterBoardWidth, \absRelayBoardHeight) coordinate (#1-tmp2)
+    ;
+
+    \finishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{REL 02}}
+
+    \draw
+    (#1-tmp2) ++(\absInnerPad, 0) coordinate (#1-tmp1)
+    ++(\absRelayDaughterBoardWidth, -\absRelayBoardHeight) coordinate (#1-tmp2)
+    ;
+
+    \unfinishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{REL 03}}
+
+    %% relay board
+
+    \draw
+    (#1-outerRelayBoard.south east)
+    ++(-\absInnerPad, \absInnerPad)
+    node [anchor = south east, font = \LARGE] {
+        \texttt{RELAY BOARDS}
+    }
+    ;
+
+    %% mux board
+
+    \draw
+    % (#1-feedback.south west -| #1-outerRelayBoard.north west) ++({6 + (4 * \absInnerPad)}, 0)
+    (#1-outerRelayBoard.east |- #1-feedback.south)
+    coordinate (#1-tmp)
+    ;
+
+    \innerEnclosureNode {#1-outerMuxBoard} {#1-sensors.north west -| #1-outerRelayBoard.north west} {#1-tmp}
+
+    \draw
+    (#1-outerMuxBoard.north west) ++(\absInnerPad, -\absInnerPad) coordinate (#1-tmp1)
+    ++(\absMuxBoardWidth, -\absMuxBoardHeight) coordinate (#1-tmp2)
+    ;
+
+    \unfinishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{MUX 01}}
+
+    \draw
+    (#1-tmp2) ++(\absInnerPad, 0) coordinate (#1-tmp1)
+    ++(\absMuxBoardWidth, \absMuxBoardHeight) coordinate (#1-tmp2)
+    ;
+
+    \finishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{MUX 02}}
+
+
+    \draw
+    (#1-outerMuxBoard.south east)
+    ++(-\absInnerPad, \absInnerPad)
+    node [anchor = south east, font = \LARGE] {
+        \texttt{MUX BOARDS}
+    }
+    ;
+
+    %% main board
+
+    \draw
+    % (#1-boardEnable.south west -| #1-outerRelayBoard.north west) ++({12 + (4 * \absInnerPad)}, 0)
+    (#1-outerRelayBoard.east |- #1-boardEnable.south)
+    coordinate (#1-tmp)
+    ;
+
+    \innerEnclosureNode {#1-outerMainBoard} {#1-lights.north west -| #1-outerRelayBoard.north west} {#1-tmp}
+
+    \draw
+    (#1-outerMainBoard.north west) ++(\absInnerPad, -\absInnerPad) coordinate (#1-tmp1)
+    ++(\absMainBoardWidth, -\absMainBoardHeight) coordinate (#1-tmp2)
+    ;
+
+    \unfinishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{MAIN 01}}
+
+    \draw
+    (#1-tmp2) ++(\absInnerPad, 0) coordinate (#1-tmp1)
+    ++(\absMainBoardWidth, \absMainBoardHeight) coordinate (#1-tmp2)
+    ;
+
+    \unfinishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{MAIN 02}}
+
+    \draw
+    (#1-outerMainBoard.south east)
+    ++(-\absInnerPad, \absInnerPad)
+    node [anchor = south east, font = \LARGE] {
+        \texttt{MAIN BOARDS}
+    }
+    ;
+
+    %% esp
+
+    \draw
+    % (#1-outerRelayBoard.west) ++(-0.75, 0) coordinate (#1-leftVert)
+    % ++(-4, -3) coordinate (#1-tmp1) ++(-6, 6) coordinate (#1-tmp2)
+    (#1-outerRelayBoard.west) ++(-0.75, 0) coordinate (#1-leftVert)
+    (#1-outerMainBoard.south west -| #1-leftVert) ++(-4, 0)
+    coordinate (#1-tmp1)
+    ++(-6,6) coordinate (#1-tmp2)
+    % ++(-4, -3) coordinate (#1-tmp1) ++(-6, 6) coordinate (#1-tmp2)
+    ;
+
+    \otherBoard {#1-esp} {#1-tmp1} {#1-tmp2} {}
+
+    %% i2c devices
+
+    \draw
+    (#1-esp.west |- #1-outerMuxBoard.north) coordinate (#1-tmp1)
+    (#1-esp.east |- #1-sensorTrigger.south) coordinate (#1-tmp2)
+    ;
+
+    \innerEnclosureNode {#1-outerIICBoard} {#1-tmp1} {#1-tmp2}
+
+    \draw
+    (#1-outerIICBoard.north west) ++(\absInnerPad, -\absInnerPad) coordinate (#1-tmp1)
+    ++(\absIICBoardWidth, -\absIICBoardHeight) coordinate (#1-tmp2)
+    ;
+
+    \unfinishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{CO2}}
+
+    \draw
+    (#1-outerIICBoard.south east)
+    ++(-\absInnerPad, \absInnerPad)
+    node [anchor = south east, font = \LARGE] {
+        \texttt{I2C DEVICES}
+    }
+    ;
+
+    \draw
+    (#1-esp.center)
+    node [anchor = center, font = \LARGE] {
+        \texttt{ESP32}
+    }
+    ;
+
+    %% connection
+
+    \draw [
+        innerConnect,
+    ]
+    ($(#1-esp.north west)!0.5!(#1-esp.north)$) ++(0, \absOuterPad) coordinate (#1-start)
+    (#1-outerIICBoard.south -| #1-start) ++(0, -\absOuterPad) coordinate (#1-end)
+    (#1-start) -- (#1-end)
+    ;
+
+    \draw [
+        innerConnect,
+    ]
+    ($(#1-esp.south east)!0.5!(#1-esp.east)$) ++(\absOuterPad, 0) coordinate (#1-start)
+    (#1-outerMainBoard.west |- #1-start) ++(-\absOuterPad, 0) coordinate (#1-end)
+    (#1-start) -- (#1-end)
+    ;
+
+    \draw [
+        innerConnect,
+    ]
+    ($(#1-esp.south east)!0.5!(#1-esp.east)$) coordinate (#1-tmp1)
+    ($(#1-tmp1)-(#1-esp.south east)$) coordinate (#1-tmp2)
+    (#1-outerMuxBoard.south west) ++(#1-tmp2) ++(-\absOuterPad, 0) coordinate (#1-end)
+    (#1-esp.north) ++(0, \absOuterPad) coordinate (#1-start)
+    (#1-start) -- (#1-start |- #1-end) -- (#1-end)
+    ;
+
+    \draw [
+        innerConnect,
+    ]
+    ($(#1-esp.south east)!0.5!(#1-esp.east)$) coordinate (#1-tmp1)
+    ($(#1-tmp1)-(#1-esp.south east)$) coordinate (#1-tmp2)
+    (#1-outerRelayBoard.south west) ++(#1-tmp2) ++(-\absOuterPad, 0) coordinate (#1-end)
+    ($(#1-esp.north east)!0.5!(#1-esp.north)$) ++(0, \absOuterPad) coordinate (#1-start)
+    (#1-start) -- (#1-start |- #1-end) -- (#1-end)
+    ;
+
+    %% io connection
+
+    \draw
+    (#1-outerMuxBoard.east) ++(\absOuterPad, 0) coordinate (#1-start)
+    ;
+
+    \foreach \io in {
+        sensors,
+        sensorTrigger,
+        feedback%
+    } {
+        \draw [ innerConnect, ]
+        (#1-\io.west) ++(-\absIOOuterPad, 0) coordinate (#1-end)
+        (#1-start |- #1-end) -- (#1-end) ;
+    }
+
+    \draw
+    (#1-outerRelayBoard.east) ++(\absOuterPad, 0) coordinate (#1-start)
+    ;
+
+    \foreach \io in {
+        exhaustPanels,
+        exhaustFans,
+        hatchPanels,
+        peltiers%
+    } {
+        \draw [ innerConnect, ]
+        (#1-\io.west) ++(-\absIOOuterPad, 0) coordinate (#1-end)
+        (#1-start |- #1-end) -- (#1-end) ;
+    }
+
+    \draw
+    (#1-outerMainBoard.east) ++(\absOuterPad, 0) coordinate (#1-start)
+    ;
+
+    \foreach \io in {
+        lights,
+        fans,
+        humidifiers,
+        boardEnable%
+    } {
+        \draw [ innerConnect, ]
+        (#1-\io.west) ++(-\absIOOuterPad, 0) coordinate (#1-end)
+        (#1-start |- #1-end) -- (#1-end) ;
+    }
+
+}
+
+\subtikzpictureactivate{subEMCUOverview}

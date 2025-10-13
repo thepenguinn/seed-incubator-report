@@ -1,20 +1,37 @@
 \tikzset{
 
     figureTikzPicStyle/.style = {
+        scale = 1,
+        transform shape,
         %> = stealth,
         %shorten > = 0.5cm,
         %shorten < = 0.5cm,
     },
 
-    absInnerModule/.style = {
+    absIOBlock/.style = {
         ultra thick,
         rectangle,
         draw = fgcol,
         rounded corners = 0.5cm,
-        inner sep = 1cm,
+        inner sep = 0.6cm,
+        outer sep = 0.4cm,
+        text width = 5cm,
+        text centered,
+        minimum height = 1.5cm,
+        font = \LARGE,
+    },
+
+    absModule/.style = {
+        ultra thick,
+        rectangle,
+        draw = fgcol,
+        rounded corners = 0.5cm,
+        inner sep = 0.5cm,
+        minimum height = 2cm,
         outer sep = 0.75cm,
         text width = 3cm,
         text centered,
+        font = \LARGE,
     },
 
     absOuterModule/.style = {
@@ -168,13 +185,48 @@
     %% DUInterConnectEnd
 
     innerEnclosure/.style = {
+        pattern = {Lines[
+            distance = 5mm,
+            angle = 45,
+            line width = 0.2mm,
+        ]},
         ultra thick,
         rectangle,
         draw = colorShadowGray,
-        colorShadowGray,
         rounded corners = 1cm,
         inner sep = 0cm,
-        outer sep = 1cm,
+        outer sep = 0cm,
+    },
+
+    finishedBoard/.style = {
+        fill = bgcol,
+        ultra thick,
+        rectangle,
+        draw = black,
+        rounded corners = 0.75cm,
+        inner sep = 0cm,
+        outer sep = 0cm,
+    },
+
+    unfinishedBoard/.style = {
+        fill = bgcol,
+        dashdotted,
+        ultra thick,
+        draw = black,
+        rectangle,
+        rounded corners = 0.75cm,
+        inner sep = 0cm,
+        outer sep = 0cm,
+    },
+
+    otherBoard/.style = {
+        fill = bgcol,
+        ultra thick,
+        rectangle,
+        draw = black,
+        rounded corners = 0.75cm,
+        inner sep = 0cm,
+        outer sep = 0cm,
     },
 
     %pics/innerEnclosure/.style args={#1/#2}{
@@ -188,6 +240,7 @@
     %},
 
     innerConnect/.style = {
+        rounded corners = 0.75cm,
         colorShadowGray,
         very thick,
         DUInterConnectFromOpenToOpen,
@@ -224,6 +277,56 @@
     ;
 }
 
+%% <name> <corner> <oppCorner> <text>
+\newcommand\finishedBoardNode[4] {
+    \draw
+    let \p{TEMPDIMA} = ($(#2)-(#3)$),
+    \n{TEMPDIMX} = {veclen(\x{TEMPDIMA}, 0)},
+    \n{TEMPDIMY} = {veclen(0, \y{TEMPDIMA})}
+    in
+    ($(#2)!0.50!(#3)$)
+    node (#1) [
+        finishedBoard,
+        minimum height = \n{TEMPDIMY},
+        minimum width = \n{TEMPDIMX},
+        anchor = center,
+    ] {\LARGE #4}
+    ;
+}
+
+%% <name> <corner> <oppCorner> <text>
+\newcommand\unfinishedBoardNode[4] {
+    \draw
+    let \p{TEMPDIMA} = ($(#2)-(#3)$),
+    \n{TEMPDIMX} = {veclen(\x{TEMPDIMA}, 0)},
+    \n{TEMPDIMY} = {veclen(0, \y{TEMPDIMA})}
+    in
+    ($(#2)!0.50!(#3)$)
+    node (#1) [
+        unfinishedBoard,
+        minimum height = \n{TEMPDIMY},
+        minimum width = \n{TEMPDIMX},
+        anchor = center,
+    ] {\LARGE #4}
+    ;
+}
+
+%% <name> <corner> <oppCorner> <text>
+\newcommand\otherBoard[4] {
+    \draw
+    let \p{TEMPDIMA} = ($(#2)-(#3)$),
+    \n{TEMPDIMX} = {veclen(\x{TEMPDIMA}, 0)},
+    \n{TEMPDIMY} = {veclen(0, \y{TEMPDIMA})}
+    in
+    ($(#2)!0.50!(#3)$)
+    node (#1) [
+        otherBoard,
+        minimum height = \n{TEMPDIMY},
+        minimum width = \n{TEMPDIMX},
+        anchor = center,
+    ] {\LARGE #4}
+    ;
+}
 \subtikzpicturedef{subFigBase} {
     origin%
 } {

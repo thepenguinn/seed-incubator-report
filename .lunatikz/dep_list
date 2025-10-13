@@ -2,6 +2,9 @@ return {
     ["endAbsSubsystems"] = {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",
     },
+    ["endEMCUOverview"] = {
+        ["parent_dir"] = "chapter_03/tikzpics",
+    },
     ["endIncOverview"] = {
         ["parent_dir"] = "chapter_01/section_01/tikzpics",
     },
@@ -13,6 +16,9 @@ return {
     },
     ["subClvlCtkDiagramBase"] = {
         ["parent_dir"] = "tikzpics",
+    },
+    ["subEMCUOverview"] = {
+        ["parent_dir"] = "chapter_03/tikzpics",
     },
     ["subFigBase"] = {
         ["parent_dir"] = "tikzpics",
