@@ -23,8 +23,9 @@ $\hrulefill$
 
 $\hrulefill$
 
-## Introduction
+<!-- ## Introduction -->
 
+<!-- DONE -->
 `FIGURE: Abstracted Block Diagram of EMCU`
 
 ## Introduces Different Parts of the EMCU
@@ -37,7 +38,9 @@ $\hrulefill$
 
 $\hrulefill$
 
-## Frame
+Say something about the enclosure.
+
+## Structural Frame
 
 `FIGURE: CAD Model.`
 
@@ -49,7 +52,7 @@ $\hrulefill$
 
 `FIGURE: CAD Model`
 
-## Incubator Area
+## Incubation Area
 
 `FIGURE: CAD Model`
 
@@ -63,11 +66,15 @@ $\hrulefill$
 
 $\hrulefill$
 
+Tell why we need this.
+
 ## Design
 
 `FIGURE: CAD Design with 7 Panels`
 
 ## Dedicated Coolers
+
+## Time Estimation of Cooling and Heating
 
 ## Interfacing Circuits
 
@@ -77,13 +84,13 @@ $\hrulefill$
 
 # Top and Side Hatches
 
+Tell why we need these.
+
 $\hrulefill$
 
 ## Design
 
 `FIGURE: CAD Model`
-
-## Time Estimation of Cooling and Heating
 
 ## Interfacing Circuits
 
@@ -94,6 +101,8 @@ $\hrulefill$
 # Air Moisture
 
 $\hrulefill$
+
+Why and what are we using?
 
 ## Interfacing Circuits
 

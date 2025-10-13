@@ -19,4 +19,8 @@
 *.run.xml
 *.o
 *.stl
+*.nav
+*.vrb
+*.snm
 *_standalone_*.tex
+main.pdf
