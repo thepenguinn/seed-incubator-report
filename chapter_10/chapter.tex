@@ -4,15 +4,28 @@
 
 \begin{document}
 
-\chapter{Auxiliary System} \label{chp:}
+\chapter{Auxiliary System} \label{chp:auxiliarySystem}
 
-%Multiplexer Boards%
+First thing we are going to tackle is the \emph{pin problem} of \esp. Due to
+the sheer amount of pins required to \emph{sense} and \emph{actuate} different
+parts of the \emph{incubator}, we need a \emph{system} that intermediates this
+task. Thus the \emph{birth} of \emph{Auxiliary system}.
+
+The sensory systems is mediated by two set of \emph{Analog multiplexers} which are
+\emph{serially} addressable\footnote{right now only one set is implemented.}. And the
+actuator systems are mediated by \emph{Shift registers}. Following sections will
+take a deep dive into the design of each of these systems.
+
+%Buffer / Inverter%
 \subfile{section_01/section.tex}
 
-%Relay Boards%
+%NAND Gate%
 \subfile{section_02/section.tex}
 
-%Main Boards%
+%Multiplexer System%
 \subfile{section_03/section.tex}
+
+%Shift Register System%
+\subfile{section_04/section.tex}
 
 \end{document}
