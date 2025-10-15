@@ -5,6 +5,9 @@ return {
     ["endAbsESP"] = {
         ["parent_dir"] = "tikzpics",
     },
+    ["endAbsESPPinout"] = {
+        ["parent_dir"] = "chapter_03/section_01/tikzpics",
+    },
     ["endAbsHumidifierSystem"] = {
         ["parent_dir"] = "chapter_07/section_01/tikzpics",
     },
@@ -25,6 +28,9 @@ return {
     },
     ["subAbsESP"] = {
         ["parent_dir"] = "tikzpics",
+    },
+    ["subAbsESPPinout"] = {
+        ["parent_dir"] = "chapter_03/section_01/tikzpics",
     },
     ["subAbsHumidifierSystem"] = {
         ["parent_dir"] = "chapter_07/section_01/tikzpics",
