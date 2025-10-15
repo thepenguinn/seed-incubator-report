@@ -209,17 +209,26 @@
 
 
 \titleformat{\section}
-{\vspace{-0.35em}\normalfont\large\filright\sffamily\scshape}
+{\vspace{-0.35em}\normalfont\Large\filright\sffamily\scshape}
 {\thesection}
 {8pt}
 {\scshape}
 {}
 
 \titleformat{\subsection}
-{\vspace{-0.35em}\normalfont\filright\sffamily\scshape}
+{\vspace{-0.35em}\normalfont\large\filright\sffamily\scshape}
 % {}
 % {0pt}
 {\thesubsection}
+{8pt}
+{\scshape}
+{}
+
+\titleformat{\subsubsection}
+{\vspace{-0.35em}\normalfont\large\filright\sffamily\scshape}
+% {}
+% {0pt}
+{\thesubsubsection}
 {8pt}
 {\scshape}
 {}
@@ -237,6 +246,7 @@
 \renewcommand{\epigraphflush}{center}
 
 \def\esp{\textsc{ESP32}\xspace}
+\def\espcam{\textsc{ESP32 CAM}\xspace}
 
 \def\IGXMaxWidth{\textwidth}
 \def\IGXMaxHeight{\textheight}

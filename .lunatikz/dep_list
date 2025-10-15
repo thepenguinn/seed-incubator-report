@@ -6,7 +6,7 @@ return {
         ["parent_dir"] = "tikzpics",
     },
     ["endAbsHumidifierSystem"] = {
-        ["parent_dir"] = "chapter_07/section_02/tikzpics",
+        ["parent_dir"] = "chapter_07/section_01/tikzpics",
     },
     ["endAbsSubsystems"] = {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",
@@ -27,7 +27,7 @@ return {
         ["parent_dir"] = "tikzpics",
     },
     ["subAbsHumidifierSystem"] = {
-        ["parent_dir"] = "chapter_07/section_02/tikzpics",
+        ["parent_dir"] = "chapter_07/section_01/tikzpics",
     },
     ["subAbsOneBitRegister"] = {
         ["parent_dir"] = "tikzpics",
