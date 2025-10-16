@@ -20,6 +20,9 @@ return {
     ["endIncOverview"] = {
         ["parent_dir"] = "chapter_01/section_01/tikzpics",
     },
+    ["endMiniProjectEMCU"] = {
+        ["parent_dir"] = "chapter_04/section_03/tikzpics",
+    },
     ["subAbsActuatorModule"] = {
         ["parent_dir"] = "tikzpics",
     },

@@ -1,0 +1,27 @@
+\begin{tikzpicture} []
+
+    \begin{scope}
+        \clip
+        node (img) [inner sep = 0pt, anchor = center] {
+            \includegraphics [
+            ] {\subfix{pics/emcu.jpg}}
+        }
+        ;
+    \end{scope}
+
+    \begin{scope}
+        \clip [
+            rounded corners = 6cm,
+        ]
+        (img.north west) rectangle (img.south east)
+        ;
+
+        \draw
+        node (img) [inner sep = 0pt, anchor = center] {
+            \includegraphics [
+            ] {\subfix{pics/emcu.jpg}}
+        }
+        ;
+    \end{scope}
+
+\end{tikzpicture}
