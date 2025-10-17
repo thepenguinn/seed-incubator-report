@@ -2,6 +2,9 @@ return {
     ["endAbsActuatorModule"] = {
         ["parent_dir"] = "tikzpics",
     },
+    ["endAbsBuffer"] = {
+        ["parent_dir"] = "tikzpics",
+    },
     ["endAbsESP"] = {
         ["parent_dir"] = "tikzpics",
     },
@@ -11,8 +14,20 @@ return {
     ["endAbsHumidifierSystem"] = {
         ["parent_dir"] = "chapter_07/section_01/tikzpics",
     },
+    ["endAbsMuxTwo"] = {
+        ["parent_dir"] = "tikzpics",
+    },
+    ["endAbsOneBitRegister"] = {
+        ["parent_dir"] = "tikzpics",
+    },
     ["endAbsSubsystems"] = {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",
+    },
+    ["endAbsTempHumeSensor"] = {
+        ["parent_dir"] = "tikzpics",
+    },
+    ["endAbsThermalSensorSystem"] = {
+        ["parent_dir"] = "chapter_05/section_05/tikzpics",
     },
     ["endCADExhaustCMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
@@ -38,6 +53,9 @@ return {
     ["subAbsActuatorModule"] = {
         ["parent_dir"] = "tikzpics",
     },
+    ["subAbsBuffer"] = {
+        ["parent_dir"] = "tikzpics",
+    },
     ["subAbsCtkDiagramBase"] = {
         ["parent_dir"] = "tikzpics",
     },
@@ -50,11 +68,20 @@ return {
     ["subAbsHumidifierSystem"] = {
         ["parent_dir"] = "chapter_07/section_01/tikzpics",
     },
+    ["subAbsMuxTwo"] = {
+        ["parent_dir"] = "tikzpics",
+    },
     ["subAbsOneBitRegister"] = {
         ["parent_dir"] = "tikzpics",
     },
     ["subAbsSubsystems"] = {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",
+    },
+    ["subAbsTempHumeSensor"] = {
+        ["parent_dir"] = "tikzpics",
+    },
+    ["subAbsThermalSensorSystem"] = {
+        ["parent_dir"] = "chapter_05/section_05/tikzpics",
     },
     ["subCADExhaustCMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
