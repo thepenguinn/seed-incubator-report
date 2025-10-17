@@ -17,6 +17,9 @@ return {
     ["endCADExhaustCMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
+    ["endCADExhaustEMODE"] = {
+        ["parent_dir"] = "chapter_05/section_01/tikzpics",
+    },
     ["endCADExhaustHMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
@@ -51,6 +54,9 @@ return {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",
     },
     ["subCADExhaustCMODE"] = {
+        ["parent_dir"] = "chapter_05/section_01/tikzpics",
+    },
+    ["subCADExhaustEMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
     ["subCADExhaustHMODE"] = {
