@@ -23,6 +23,9 @@ return {
     ["endCADExhaustHMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
+    ["endCoreBlockPanels"] = {
+        ["parent_dir"] = "chapter_05/section_01/tikzpics",
+    },
     ["endEMCUOverview"] = {
         ["parent_dir"] = "chapter_03/tikzpics",
     },
@@ -64,6 +67,9 @@ return {
     },
     ["subClvlCtkDiagramBase"] = {
         ["parent_dir"] = "tikzpics",
+    },
+    ["subCoreBlockPanels"] = {
+        ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
     ["subEMCUOverview"] = {
         ["parent_dir"] = "chapter_03/tikzpics",
