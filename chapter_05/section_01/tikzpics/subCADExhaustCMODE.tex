@@ -78,7 +78,115 @@
         ;
     }
 
+    %% heading
 
+    \draw [
+        ultra thick,
+    ]
+    (#1-imgTop.north west) ++(0, 1) coordinate (#1-tmp)
+    % (#1-tmp) -- (#1-imgTop.north east |- #1-tmp)
+
+    (#1-tmp -| #1-imgTop.east) ++(0, 0.75cm)
+    node (#1-title) [
+        anchor = south east,
+        % above = 1cm,
+        font = \Huge,
+    ] {
+        \texttt{CORE BLOCK IN CMODE}
+    }
+
+    ;
+
+
+    %%
+
+    \draw
+    (#1-imgBot.south east) ++(0, -1cm) coordinate (#1-tmp)
+
+    (#1-tmp)
+    node (#1-views) [
+        anchor = north east,
+        font = \Huge,
+    ] {
+        \begin{minipage} {10cm}
+            \begin{tabularx} {\textwidth} {
+                    >{\raggedleft \arraybackslash \ttfamily}X
+                }
+
+                DIFFERENT VIEWS \\
+
+            \end{tabularx}
+        \end{minipage}
+    }
+
+    (#1-views.south -| #1-imgBot.west) ++(0, -1cm) coordinate (#1-tmp)
+
+    (#1-tmp)
+    node (#1-annoFirst) [
+        anchor = north west,
+        font = \Huge,
+    ] {
+        \begin{minipage} {15cm}
+            \renewcommand\arraystretch{1}
+            \begin{tabularx} {\textwidth} {
+                    >{\raggedright \arraybackslash \ttfamily}X
+                }
+
+                01 - BACK TOP LEFT\\
+                04 - LEFT \\
+                07 - FRONT TOP LEFT \\
+                10 - BACK BOTTOM LEFT \\
+
+            \end{tabularx}
+        \end{minipage}
+    }
+
+    (#1-annoFirst.north -| #1-imgBot.south) coordinate (#1-tmp)
+
+    (#1-tmp)
+    node (#1-annoSecond) [
+        anchor = north,
+        font = \Huge,
+    ] {
+        \renewcommand\arraystretch{1}
+        \begin{tabular} {
+                % >{\raggedright \arraybackslash \ttfamily}X
+                l
+            }
+
+            \texttt{02 - BACK} \\
+            \texttt{05 - TOP} \\
+            \texttt{08 - FRONT} \\
+            \texttt{11 - BOTTOM} \\
+
+        \end{tabular}
+        % \begin{minipage} {6cm}
+        % \end{minipage}
+    }
+
+    (#1-annoFirst.north -| #1-imgBot.east) coordinate (#1-tmp)
+
+    (#1-tmp)
+    node (#1-annoThird) [
+        anchor = north east,
+        font = \Huge,
+    ] {
+        \begin{minipage} {15cm}
+            \renewcommand\arraystretch{1}
+            \begin{tabularx} {\textwidth} {
+                    >{\raggedleft \arraybackslash \ttfamily}X
+                }
+
+                BACK TOP RIGHT - 03 \\
+                RIGHT - 06 \\
+                FRONT TOP RIGHT - 09 \\
+                BACK BOTTOM RIGHT - 12 \\
+
+            \end{tabularx}
+        \end{minipage}
+    }
+
+    ;
 
 }
 
