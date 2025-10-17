@@ -17,6 +17,9 @@ return {
     ["endCADExhaustCMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
+    ["endCADExhaustHMODE"] = {
+        ["parent_dir"] = "chapter_05/section_01/tikzpics",
+    },
     ["endEMCUOverview"] = {
         ["parent_dir"] = "chapter_03/tikzpics",
     },
@@ -48,6 +51,9 @@ return {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",
     },
     ["subCADExhaustCMODE"] = {
+        ["parent_dir"] = "chapter_05/section_01/tikzpics",
+    },
+    ["subCADExhaustHMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
     ["subClvlCtkDiagramBase"] = {
