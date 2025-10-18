@@ -45,7 +45,7 @@ return {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
     ["endEMCUOverview"] = {
-        ["parent_dir"] = "chapter_03/tikzpics",
+        ["parent_dir"] = "chapter_10/tikzpics",
     },
     ["endIncOverview"] = {
         ["parent_dir"] = "chapter_01/section_01/tikzpics",
@@ -108,7 +108,7 @@ return {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
     ["subEMCUOverview"] = {
-        ["parent_dir"] = "chapter_03/tikzpics",
+        ["parent_dir"] = "chapter_10/tikzpics",
     },
     ["subFigBase"] = {
         ["parent_dir"] = "tikzpics",

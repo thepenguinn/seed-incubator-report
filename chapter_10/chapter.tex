@@ -6,15 +6,30 @@
 
 \chapter{Auxiliary System} \label{chp:auxiliarySystem}
 
-First thing we are going to tackle is the \emph{pin problem} of \esp. Due to
+Now let's tackle the \emph{pin problem} of \esp. Due to
 the sheer amount of pins required to \emph{sense} and \emph{actuate} different
 parts of the \emph{incubator}, we need a \emph{system} that intermediates this
 task. Thus the \emph{birth} of \emph{Auxiliary system}.
 
 The sensory systems is mediated by two set of \emph{Analog multiplexers} which are
 \emph{serially} addressable\footnote{right now only one set is implemented.}. And the
-actuator systems are mediated by \emph{Shift registers}. Following sections will
+actuator systems are mediated by \emph{Shift register} boards. Following sections will
 take a deep dive into the design of each of these systems.
+
+\begin{figure}
+    \centering
+    \includegraphics [
+        max width = \IGXMaxWidth,
+        max height = \IGXMaxHeight,
+        \IGXDefaultOptionalArgs,
+    ] {tikzpics/endEMCUOverview.pdf}
+    \captionof{figure} {Overview EMCU's auxiliary system.}
+    \label{fig:emcuAuxilarySystem}
+\end{figure}
+
+As we can see from figure \ref{fig:emcuAuxilarySystem}, we can see that the sensors
+and actuators are mediated by three types of boards, namely \textsc{Multiplexer Boards},
+\textsc{Relay Boards}, and \textsc{Main Boards}.
 
 %Buffer / Inverter%
 \subfile{section_01/section.tex}
