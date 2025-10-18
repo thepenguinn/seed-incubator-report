@@ -50,6 +50,9 @@ return {
     ["endIncOverview"] = {
         ["parent_dir"] = "chapter_01/section_01/tikzpics",
     },
+    ["endIncOverviewUpdated"] = {
+        ["parent_dir"] = "chapter_01/section_01/tikzpics",
+    },
     ["endMiniProjectEMCU"] = {
         ["parent_dir"] = "chapter_04/section_03/tikzpics",
     },
@@ -111,6 +114,9 @@ return {
         ["parent_dir"] = "tikzpics",
     },
     ["subIncOverview"] = {
+        ["parent_dir"] = "chapter_01/section_01/tikzpics",
+    },
+    ["subIncOverviewUpdated"] = {
         ["parent_dir"] = "chapter_01/section_01/tikzpics",
     },
 }

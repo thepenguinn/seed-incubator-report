@@ -1,0 +1,87 @@
+\subtikzpicturedef{subIncOverviewUpdated} {
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+
+    \subFigBase {#1-figBase} {#1-origin} {origin}
+
+    \draw
+    node (#1-user) [
+        absModule,
+    ] {
+        \texttt{USER}
+    }
+
+    (#1-user.east)
+    node (#1-sinc) [
+        absModule,
+        right = 2cm,
+    ] {
+        \texttt{SINC}
+    }
+
+    node (#1-emcu) [
+        absModule,
+        above right = of #1-sinc,
+    ] {
+        \texttt{EMCU}
+    }
+
+    node (#1-gmu) [
+        absModule,
+        below right = of #1-sinc,
+    ] {
+        \texttt{GMU}
+    }
+
+    node (#1-seedling) [
+        absModule,
+        below right = of #1-emcu,
+    ] {
+        \texttt{SEEDLING}
+    }
+
+    ;
+
+    %% interconnctions
+
+    \draw [
+         innerConnect,
+    ]
+    (#1-sinc.north) -- (#1-sinc.north |- #1-emcu.west) -- (#1-emcu.west)
+    ;
+
+
+    \draw [
+         innerConnect,
+    ]
+    (#1-sinc.south) -- (#1-sinc.south |- #1-gmu.west) -- (#1-gmu.west)
+    ;
+
+
+    \draw [
+         innerConnect,
+    ]
+    (#1-emcu.east) -- (#1-emcu.east -| #1-seedling.north) -- (#1-seedling.north)
+    ;
+
+    \draw [
+         innerConnect,
+    ]
+    (#1-gmu.east) -- (#1-gmu.east -| #1-seedling.south) -- (#1-seedling.south)
+    ;
+
+    \draw [
+         innerConnect,
+    ]
+    (#1-emcu.south) -- (#1-gmu.north)
+    ;
+
+    \draw [
+         innerConnect,
+    ]
+    (#1-user.east) -- (#1-sinc.west)
+    ;
+}
+
+\subtikzpictureactivate{subIncOverviewUpdated}
