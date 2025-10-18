@@ -104,9 +104,14 @@ sections will go through each of these modes.
 
 \subsection{C Mode}
 
-% \texttt{CMODE} or cooler mode connects the cooling chamber with the common chamber and the incubator
-% insides. And disconnects the heating chamber from the incubator and connects it to the outsides. All
-% three fans are on and directed towards the peltier module.
+\texttt{CMODE} or cooler mode connects the cooling chamber with the common chamber and the incubator
+insides. And disconnects the heating chamber from the incubator and connects it to the outsides. All
+three fans are on and directed towards the peltier module. Heating chamber will pull the ambient air through
+the right side and dissipates heat at the hotter side of the peltier module. The cooling chamber will
+pull air from the incubator insides and cools it further and transfers it back to the incubator.
+Figure \ref{fig:coreBlockCMODE} illustrates the state of panels in this mode.
+
+\vfill
 
 \begin{figure}
     \centering
@@ -121,6 +126,15 @@ sections will go through each of these modes.
 
 \subsection{H Mode}
 
+\texttt{HMODE} or heater mode connects the heating chamber with the common chamber and the incubator
+insides. And disconnects the cooling chamber from the incubator and connects it to the outsides. All
+three fans are on and directed towards the peltier module. Cooling chamber will pull the ambient air through
+the left side and dissipates coldness at the cooler side of the peltier module. The heating chamber will
+pull air from the incubator insides and heats it further and transfers it back to the incubator.
+Figure \ref{fig:coreBlockHMODE} illustrates the state of panels in this mode.
+
+\vfill
+
 \begin{figure}
     \centering
     \includegraphics [
@@ -133,6 +147,13 @@ sections will go through each of these modes.
 \end{figure}
 
 \subsection{E Mode}
+
+\texttt{EMODE} or exhaust mode disconnects the common chamber from the incubator and connects both the
+cooling and heating chamber to both the outsides and the insides of the incubator. In this mode, all
+three fans and peltier will be turned off. Figure \ref{fig:coreBlockHMODE} illustrates the state of panels
+in this mode.
+
+\vfill
 
 \begin{figure}
     \centering
