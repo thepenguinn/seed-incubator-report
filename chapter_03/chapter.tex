@@ -6,16 +6,43 @@
 
 \chapter{EMCU: Overview} \label{chp:}
 
+As the name suggests, the \textsc{Environment Monitoring and Control Unit} is responsible
+for taking care of the environmental
+aspects of the incubator. EMCU aims to monitor and control aspects like the
+\emph{temperature}, \emph{humidity}, \emph{lighting}, \emph{air quality}, etc.
+
 \begin{figure}
     \centering
     \includegraphics [
         max width = \IGXMaxWidth,
         max height = \IGXMaxHeight,
         \IGXDefaultOptionalArgs,
-    ] {tikzpics/endEMCUOverview.pdf}
-    \captionof{figure} {}
-    \label{fig:}
+    ] {tikzpics/endAbsEMCU.pdf}
+    \captionof{figure} {An abstracted block diagram of EMCU and the aspects it controls.}
+    \label{fig:abstractEMCU}
 \end{figure}
+
+Inorder to accomplish this, \textsc{Emcu} needs to
+\emph{interface} various \emph{actuators} and \emph{sensors}. As a matter of
+fact, the sheer amount of \emph{actuators} and \emph{sensors} required to
+achieve this exceeds the total number of GPIOs\footnote{General Purpose Input
+Output pins.} \esp has. In order to \emph{synchronize} all of the
+\emph{subsystems}, \esp needs an \emph{external subsystem} to control all the
+other \emph{subsystems}, an \textsc{Auxiliary System} as we will be calling
+this \emph{external system}, in this entire document.
+
+% \begin{figure}
+%     \centering
+%     \includegraphics [
+%         max width = \IGXMaxWidth,
+%         max height = \IGXMaxHeight,
+%         \IGXDefaultOptionalArgs,
+%     ] {tikzpics/endEMCUOverview.pdf}
+%     \captionof{figure} {Overview EMCU.}
+%     \label{fig:emcuOverview}
+% \end{figure}
+
+% From figure \ref{fig:emcuOverview}, we can see that the \esp
 
 %% TODO: this should go to the introduction / overview.
 % %Different Parts of the Incubator%

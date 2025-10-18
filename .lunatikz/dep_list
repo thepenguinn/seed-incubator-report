@@ -5,6 +5,9 @@ return {
     ["endAbsBuffer"] = {
         ["parent_dir"] = "tikzpics",
     },
+    ["endAbsEMCU"] = {
+        ["parent_dir"] = "chapter_03/tikzpics",
+    },
     ["endAbsESP"] = {
         ["parent_dir"] = "tikzpics",
     },
@@ -58,6 +61,9 @@ return {
     },
     ["subAbsCtkDiagramBase"] = {
         ["parent_dir"] = "tikzpics",
+    },
+    ["subAbsEMCU"] = {
+        ["parent_dir"] = "chapter_03/tikzpics",
     },
     ["subAbsESP"] = {
         ["parent_dir"] = "tikzpics",

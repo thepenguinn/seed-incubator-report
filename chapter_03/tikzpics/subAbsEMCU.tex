@@ -1,0 +1,131 @@
+\subtikzpicturedef{subAbsEMCU} {
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+
+    \subAbsCtkDiagramBase {#1-ctkDiaBase} {#1-origin} {origin}
+
+    \subAbsESP {#1-esp} {#1-origin} {center}
+
+    \ovrAbsESPDrawLabelName {#1-esp} {\texttt{ESP 32}}
+
+    \draw
+    (#1-esp-east)
+    node (#1-aux) [
+        absCtkAuxSystem,
+        right = 2cm,
+    ] {
+        \ttfamily
+        AUXILIARY SYSTEM
+    }
+
+    (#1-aux.east) ++(3, 0) coordinate (#1-tmp)
+
+    (#1-tmp)
+    node (#1-airMoisture) [
+        absCtkEnvModule,
+        above = 2cm,
+        anchor = south,
+    ] {
+        \ttfamily
+        AIR MOISTURE
+    }
+
+    (#1-tmp)
+    node (#1-airQuality) [
+        absCtkEnvModule,
+        below = 2cm,
+        anchor = north,
+    ] {
+        \ttfamily
+        AIR QUALITY
+    }
+
+    node (#1-temp) [
+        absCtkEnvModule,
+        above = of #1-aux,
+        anchor = south,
+    ] {
+        \ttfamily
+        TEMPERATURE
+    }
+
+    node (#1-water) [
+        absCtkEnvModule,
+        below = of #1-aux,
+        anchor = north,
+    ] {
+        \ttfamily
+        WATER AND FERTILIZER
+    }
+
+    node (#1-light) [
+        absCtkEnvModule,
+        right = 1.5cm of #1-aux,
+        anchor = west,
+    ] {
+        \ttfamily
+        LIGHTING
+    }
+
+    (#1-esp-north)
+    node (#1-gmu) [
+        absCtkOtherSystem,
+        above = 1.0cm,
+        anchor = south,
+    ] {
+        \ttfamily
+        GMU
+    }
+
+    (#1-esp-south)
+    node (#1-sinc) [
+        absCtkOtherSystem,
+        below = 1.0cm,
+        anchor = north,
+    ] {
+        \ttfamily
+        SINC
+    }
+
+    ;
+
+    \draw
+    (#1-esp-r0 |- #1-aux.west) coordinate (#1-espStart)
+    ;
+
+
+    \foreach \x/\y in {
+        esp-north/gmu.south,
+        esp-south/sinc.north,
+        espStart/aux.west,
+        aux.east/light.west,
+        aux.north/temp.south,
+        aux.south/water.north%
+    } {
+        \draw [
+            absCtkInnerConnection,
+        ]
+        (#1-\x) -- (#1-\y)
+        ;
+    }
+
+    \draw
+    ($(#1-aux.north)!0.5!(#1-aux.north east)$) coordinate (#1-airMoistureStart)
+    ($(#1-aux.south)!0.5!(#1-aux.south east)$) coordinate (#1-airQualityStart)
+    ;
+
+    \foreach \x/\y in {
+        airMoistureStart/airMoisture.west,
+        airQualityStart/airQuality.west%
+    } {
+        \draw [
+            absCtkInnerConnection,
+        ]
+        (#1-\x) -- (#1-\x |- #1-\y ) -- (#1-\y)
+        ;
+    }
+
+}
+
+\subtikzpictureactivate{subAbsEMCU}
