@@ -53,23 +53,23 @@
         \texttt{EXHAUST PANELS}
     }
 
+    % (#1-exhaustPanels.south)
+    % node (#1-exhaustFans) [
+    %     anchor = north,
+    %     absIOBlock,
+    % ] {
+    %     \texttt{EXHAUST FANS}
+    % }
+
     (#1-exhaustPanels.south)
-    node (#1-exhaustFans) [
+    node (#1-inletPanels) [
         anchor = north,
         absIOBlock,
     ] {
-        \texttt{EXHAUST FANS}
+        \texttt{INLET PANELS}
     }
 
-    (#1-exhaustFans.south)
-    node (#1-hatchPanels) [
-        anchor = north,
-        absIOBlock,
-    ] {
-        \texttt{HATCH PANELS}
-    }
-
-    (#1-hatchPanels.south)
+    (#1-inletPanels.south)
     node (#1-peltiers) [
         anchor = north,
         absIOBlock,
@@ -95,6 +95,14 @@
     }
 
     (#1-fans.south)
+    node (#1-hatchPanels) [
+        anchor = north,
+        absIOBlock,
+    ] {
+        \texttt{HATCH PANELS}
+    }
+
+    (#1-hatchPanels.south)
     node (#1-humidifiers) [
         anchor = north,
         absIOBlock,
@@ -242,20 +250,20 @@
     (#1-esp.east |- #1-sensorTrigger.south) coordinate (#1-tmp2)
     ;
 
-    \innerEnclosureNode {#1-outerIICBoard} {#1-tmp1} {#1-tmp2}
+    \innerEnclosureNode {#1-outerGMUBoard} {#1-tmp1} {#1-tmp2}
 
     \draw
-    (#1-outerIICBoard.north west) ++(\absInnerPad, -\absInnerPad) coordinate (#1-tmp1)
+    (#1-outerGMUBoard.north west) ++(\absInnerPad, -\absInnerPad) coordinate (#1-tmp1)
     ++(\absIICBoardWidth, -\absIICBoardHeight) coordinate (#1-tmp2)
     ;
 
-    \unfinishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{CO2}}
+    \unfinishedBoardNode {#1-tmp} {#1-tmp1} {#1-tmp2} {\texttt{ECAM}}
 
     \draw
-    (#1-outerIICBoard.south east)
+    (#1-outerGMUBoard.south east)
     ++(-\absInnerPad, \absInnerPad)
     node [anchor = south east, font = \LARGE] {
-        \texttt{I2C DEVICES}
+        \texttt{GMU}
     }
     ;
 
@@ -272,7 +280,7 @@
         innerConnect,
     ]
     ($(#1-esp.north west)!0.5!(#1-esp.north)$) ++(0, \absOuterPad) coordinate (#1-start)
-    (#1-outerIICBoard.south -| #1-start) ++(0, -\absOuterPad) coordinate (#1-end)
+    (#1-outerGMUBoard.south -| #1-start) ++(0, -\absOuterPad) coordinate (#1-end)
     (#1-start) -- (#1-end)
     ;
 
@@ -326,8 +334,8 @@
 
     \foreach \io in {
         exhaustPanels,
-        exhaustFans,
-        hatchPanels,
+        % exhaustFans,
+        inletPanels,
         peltiers%
     } {
         \draw [ innerConnect, ]
@@ -342,6 +350,7 @@
     \foreach \io in {
         lights,
         fans,
+        hatchPanels,
         humidifiers,
         boardEnable%
     } {
