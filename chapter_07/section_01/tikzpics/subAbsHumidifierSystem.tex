@@ -1,51 +1,58 @@
 \subtikzpicturedef{subAbsHumidifierSystem} {
     origin%
 } {
+
     \draw (#1-start) coordinate (#1-origin);
     \subAbsCtkDiagramBase {#1-absCtkDiagramBase} {#1-origin} {origin}
 
     \draw
-    (#1-origin) coordinate (#1-esp)
+    (#1-origin) coordinate (#1-main)
     ;
 
-    \subAbsESP {#1-esp} {#1-esp} {center}
+    \subAbsMainFour {#1-main} {#1-main} {center}
 
     \draw
-    (#1-esp-r0) ++(1, 0) coordinate (#1-h0)
+    (#1-main-l0) ++(-2, 0) coordinate (#1-pa0)
+    (#1-main-l1) ++(-2, 0) coordinate (#1-pa1)
     ;
 
-    %\subAbsOneBitRegister {#1-sr0} {#1-sr0} {l0}
-    %
-    %\draw
-    %(#1-sr0-b0) ++(0, -1) coordinate (#1-sr1)
-    %;
-    %
-    %\subAbsOneBitRegister {#1-sr1} {#1-sr1} {t0}
-    %
-    %\draw
-    %(#1-sr0-r0) ++(1, 0) coordinate (#1-h0)
-    %;
-    %
+    \subAbsPlainActuatorModule {#1-pa0} {#1-pa0} {r0}
+    \subAbsPlainActuatorModule {#1-pa1} {#1-pa1} {r0}
 
-    \begin{scope} [
-            rotate = 180,
-        ]
-        \subAbsActuatorModule {#1-h0} {#1-h0} {cr1}
-        %\subAbsActuatorModule {#1-h1} {#1-h0-cr1 |- #1-sr1-r0} {cr1}
-    \end{scope}
+    \draw
+    (#1-main-r3) ++(1, 0) coordinate (#1-esp)
+    ;
+
+    \subAbsESP {#1-esp} {#1-esp} {l5}
+
+    \draw
+    (#1-esp-l4 -| #1-pa0-l0) coordinate (#1-b0)
+    ;
 
     %% labelling
 
-    \ovrAbsESPDrawLabelName {#1-esp} {\texttt{ESP}}
+    \ovrAbsESPDrawLabelName {#1-esp} {\texttt{ESP32}}
 
-    \ovrAbsActuatorModuleDrawLabelName {#1-h0} {\texttt{H0}} {\texttt{CTRL}}
+    \ovrAbsPlainActuatorModuleDrawLabelName {#1-pa0} {PEZO 01}
+    \ovrAbsPlainActuatorModuleDrawLabelName {#1-pa1} {PEZO 02}
 
-    %\ovrAbsActuatorModuleDrawLabelName {#1-h1} {H1} {CTRL}
+    \ovrAbsMainDrawLabelName {#1-main} {MAIN}
 
     %% connections
 
+    \draw
+    (#1-esp-l3 -| #1-main-r0) coordinate (#1-emc0)
+    (#1-esp-l4 -| #1-main-r0) coordinate (#1-emc1)
+    (#1-esp-l5 -| #1-main-r0) coordinate (#1-emc2)
+    ;
+
     \foreach \start/\stop in {
-        #1-esp-r0/#1-h0-cr1%
+        #1-pa0-r0/#1-main-l0,
+        #1-pa1-r0/#1-main-l1,
+        %%
+        #1-esp-l3/#1-emc0,
+        #1-esp-l4/#1-emc1,
+        #1-esp-l5/#1-emc2%
     } {
         \draw [
             absCtkInnerConnection,
@@ -55,48 +62,53 @@
     }
 
     \draw [
-        absCtkModule
+        absCtkAuxModule
     ]
-    (#1-esp-r0) ++(-\absCtkPinPad, 0) node [left = 4pt] {\texttt{D21}}
+    (#1-main-l0) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{P0}}
+    (#1-main-l1) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{P1}}
     ;
 
     %% annotation
 
     %\draw
-    %(#1-esp-west) coordinate (#1-leftVert)
-    %(#1-h0-west) coordinate (#1-rightVert) %% west because it is rotated
-    %(#1-sr0-t0) coordinate (#1-topHori)
+    %(#1-leftVert) ++(-0.25, 0) coordinate (#1-leftVert)
     %;
     %
-    %\node at (#1-esp-center -| #1-leftVert) [
+    %\node at (#1-esp-center -| #1-rightVert) [
     %    absCtkAnnotation,
-    %    anchor = east,
+    %    anchor = west,
     %] {
     %    \absCtkAnnotationWrap{
     %    \item \textbf{ESP:} Esp32.
     %    }
     %};
     %
-    %\draw
-    %($(#1-h0-center)!0.50!(#1-h1-center)$) coordinate (#1-tmp)
-    %;
-    %
-    %\node at (#1-tmp -| #1-rightVert) [
+    %\node at (#1-main-center -| #1-rightVert) [
     %    absCtkAnnotation,
     %    anchor = west,
     %] {
     %    \absCtkAnnotationWrap{
-    %    \item \textbf{HX:} Piezoelectric Humidifiers.
-    %    \item \textbf{CTRL:} Control circuits for Humidifiers.
+    %    \item \textbf{MUX:} Analog Multiplexer, part of the Auxiliary System.
     %    }
     %};
     %
-    %\node at (#1-sr0-t0 |- #1-topHori) [
+    %\draw ($(#1-pa1-center)!0.50!(#1-pa2-center)$) coordinate (#1-tmp);
+    %\node at (#1-tmp -| #1-leftVert) [
     %    absCtkAnnotation,
-    %    anchor = south,
+    %    anchor = east,
     %] {
     %    \absCtkAnnotationWrap{
-    %    \item Enable Shift Register.
+    %    \item \textbf{LDR:} Light Dependent Resistors.
+    %    }
+    %};
+    %
+    %\node at (#1-b0-center -| #1-leftVert) [
+    %    absCtkAnnotation,
+    %    anchor = south east,
+    %] {
+    %    \absCtkAnnotationWrap{
+    %    \item \textbf{BUF:} Buffer or Enabling Circuit.
+    %    \item \textbf{0/1:} One Bit Register, part of the Auxiliary System.
     %    }
     %};
 

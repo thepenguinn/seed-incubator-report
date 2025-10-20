@@ -87,12 +87,13 @@ module will turn on. And if we press twice\footnote{given that the module was al
 turn off. If we \emph{trace} the PCB \emph{tracing}, we can see that the push button is simply connecting the
 some of the pins to ground, when it is being pressed.
 
-With that information we can now turn on and turn off the module using one of the GPIOs of \esp. We simply
+With that information we can now turn on and turn off the module using one of the pins of the
+main board\footnote{of the auxiliary system.}. We simply
 keep the pin high and keep the \emph{state} of the humidifier \emph{internally}\footnote{as in some variable.}.
-When we want to turn on the module, we can simply give a \emph{low pulse} using this pin. And if we want
+When we want to turn on the module, we can simply give a \emph{low pulse} from this pin. And if we want
 to turn off the module, we can simply give two pulses.
 
-Refer figure \ref{fig:absHumidifierSystem} for the interfacing of the module, with \esp.
+Refer figure \ref{fig:absHumidifierSystem} for the interfacing of the module, using auxiliary system.
 
 \begin{figure}
     \centering
@@ -101,20 +102,13 @@ Refer figure \ref{fig:absHumidifierSystem} for the interfacing of the module, wi
         max height = \IGXMaxHeight,
         \IGXDefaultOptionalArgs,
     ] {tikzpics/endAbsHumidifierSystem.pdf}
-    \captionof{figure} {Interfacing of piezoelectric humidifier module.}
+    \captionof{figure} {Interfacing of piezoelectric humidifier modules.}
     \label{fig:absHumidifierSystem}
 \end{figure}
 
-\alertNote{
-    Trigger pin of \emph{humidifier} is connected to the \texttt{D21} of the \esp as we can see
-    from figure \ref{fig:absHumidifierSystem}.
-}
-
-\alertImportant{
-    Right now, the \emph{humidifier} is triggered directly from the \esp itself. In the future
-    all the \emph{actuator control} will be moved to the \emph{auxiliary system} with a separate
-    control board\footnote{will be another shift register board.} and \esp will simply interface
-    the board through couple of pins.
+\alertWarning{
+    \texttt{P0}, and \texttt{P1} of the main board shown in figure \ref{fig:absHumidifierSystem} are temporary.
+    We haven't decided the exact pins that are going to control these piezoelectric humidifiers.
 }
 
 \end{document}
