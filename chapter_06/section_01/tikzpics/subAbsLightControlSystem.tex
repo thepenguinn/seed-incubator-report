@@ -1,0 +1,136 @@
+\subtikzpicturedef{subAbsLightControlSystem} {
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+    \subAbsCtkDiagramBase {#1-absCtkDiagramBase} {#1-origin} {origin}
+
+    \draw
+    (#1-origin) coordinate (#1-main)
+    ;
+
+    \subAbsMainFour {#1-main} {#1-main} {center}
+
+    \draw
+    (#1-main-l0) ++(-3, 0) coordinate (#1-pa0)
+    (#1-main-l1) ++(-3, 0) coordinate (#1-pa1)
+    (#1-main-l2) ++(-3, 0) coordinate (#1-pa2)
+    (#1-main-l3) ++(-3, 0) coordinate (#1-pa3)
+
+    (#1-main-r0) ++(3, 0) coordinate (#1-pa4)
+    ;
+
+    \subAbsPlainActuatorModule {#1-pa0} {#1-pa0} {r0}
+    \subAbsPlainActuatorModule {#1-pa1} {#1-pa1} {r0}
+    \subAbsPlainActuatorModule {#1-pa2} {#1-pa2} {r0}
+    \subAbsPlainActuatorModule {#1-pa3} {#1-pa3} {r0}
+
+    \subAbsPlainActuatorModule {#1-pa4} {#1-pa4} {l0}
+
+    \draw
+    (#1-main-r3) ++(1, 0) coordinate (#1-esp)
+    ;
+
+    \subAbsESP {#1-esp} {#1-esp} {l5}
+
+    \draw
+    (#1-esp-l4 -| #1-pa0-l0) coordinate (#1-b0)
+    ;
+
+    %% labelling
+
+    \ovrAbsESPDrawLabelName {#1-esp} {\texttt{ESP}}
+
+    \ovrAbsPlainActuatorModuleDrawLabelName {#1-pa0} {GMU L01}
+    \ovrAbsPlainActuatorModuleDrawLabelName {#1-pa1} {GMU L02}
+    \ovrAbsPlainActuatorModuleDrawLabelName {#1-pa2} {GMU L03}
+    \ovrAbsPlainActuatorModuleDrawLabelName {#1-pa3} {GMU L04}
+
+    \ovrAbsPlainActuatorModuleDrawLabelName {#1-pa4} {GROW L01}
+
+    \ovrAbsMainDrawLabelName {#1-main} {MAIN}
+
+    %% connections
+
+    \draw
+    (#1-esp-l3 -| #1-main-r0) coordinate (#1-emc0)
+    (#1-esp-l4 -| #1-main-r0) coordinate (#1-emc1)
+    (#1-esp-l5 -| #1-main-r0) coordinate (#1-emc2)
+    ;
+
+    \foreach \start/\stop in {
+        #1-pa0-r0/#1-main-l0,
+        #1-pa1-r0/#1-main-l1,
+        #1-pa2-r0/#1-main-l2,
+        #1-pa3-r0/#1-main-l3,
+        %%
+        #1-pa4-l0/#1-main-r0,
+        %%
+        #1-esp-l3/#1-emc0,
+        #1-esp-l4/#1-emc1,
+        #1-esp-l5/#1-emc2%
+    } {
+        \draw [
+            absCtkInnerConnection,
+        ]
+        (\start) -- (\stop)
+        ;
+    }
+
+    \draw [
+        absCtkAuxModule
+    ]
+    (#1-main-l0) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{P0}}
+    (#1-main-l1) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{P1}}
+    (#1-main-l2) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{P2}}
+    (#1-main-l3) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{P3}}
+
+    (#1-main-r0) ++(-\absCtkPinPad, 0) node [left = 4pt] {\texttt{P4}}
+    ;
+
+    %% annotation
+
+    %\draw
+    %(#1-leftVert) ++(-0.25, 0) coordinate (#1-leftVert)
+    %;
+    %
+    %\node at (#1-esp-center -| #1-rightVert) [
+    %    absCtkAnnotation,
+    %    anchor = west,
+    %] {
+    %    \absCtkAnnotationWrap{
+    %    \item \textbf{ESP:} Esp32.
+    %    }
+    %};
+    %
+    %\node at (#1-main-center -| #1-rightVert) [
+    %    absCtkAnnotation,
+    %    anchor = west,
+    %] {
+    %    \absCtkAnnotationWrap{
+    %    \item \textbf{MUX:} Analog Multiplexer, part of the Auxiliary System.
+    %    }
+    %};
+    %
+    %\draw ($(#1-pa1-center)!0.50!(#1-pa2-center)$) coordinate (#1-tmp);
+    %\node at (#1-tmp -| #1-leftVert) [
+    %    absCtkAnnotation,
+    %    anchor = east,
+    %] {
+    %    \absCtkAnnotationWrap{
+    %    \item \textbf{LDR:} Light Dependent Resistors.
+    %    }
+    %};
+    %
+    %\node at (#1-b0-center -| #1-leftVert) [
+    %    absCtkAnnotation,
+    %    anchor = south east,
+    %] {
+    %    \absCtkAnnotationWrap{
+    %    \item \textbf{BUF:} Buffer or Enabling Circuit.
+    %    \item \textbf{0/1:} One Bit Register, part of the Auxiliary System.
+    %    }
+    %};
+
+}
+
+\subtikzpictureactivate{subAbsLightControlSystem}

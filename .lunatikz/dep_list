@@ -17,6 +17,9 @@ return {
     ["endAbsHumidifierSystem"] = {
         ["parent_dir"] = "chapter_07/section_01/tikzpics",
     },
+    ["endAbsLightControlSystem"] = {
+        ["parent_dir"] = "chapter_06/section_01/tikzpics",
+    },
     ["endAbsMainFour"] = {
         ["parent_dir"] = "tikzpics",
     },
@@ -82,6 +85,9 @@ return {
     },
     ["subAbsHumidifierSystem"] = {
         ["parent_dir"] = "chapter_07/section_01/tikzpics",
+    },
+    ["subAbsLightControlSystem"] = {
+        ["parent_dir"] = "chapter_06/section_01/tikzpics",
     },
     ["subAbsMainFour"] = {
         ["parent_dir"] = "tikzpics",
