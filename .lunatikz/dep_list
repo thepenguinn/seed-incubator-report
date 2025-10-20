@@ -26,6 +26,9 @@ return {
     ["endAbsOneBitRegister"] = {
         ["parent_dir"] = "tikzpics",
     },
+    ["endAbsPlainActuatorModule"] = {
+        ["parent_dir"] = "tikzpics",
+    },
     ["endAbsSubsystems"] = {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",
     },
@@ -87,6 +90,9 @@ return {
         ["parent_dir"] = "tikzpics",
     },
     ["subAbsOneBitRegister"] = {
+        ["parent_dir"] = "tikzpics",
+    },
+    ["subAbsPlainActuatorModule"] = {
         ["parent_dir"] = "tikzpics",
     },
     ["subAbsSubsystems"] = {
