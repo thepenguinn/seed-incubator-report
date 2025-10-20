@@ -33,11 +33,17 @@ of lights will have a violet glow to them. We need extra white lights for this p
         max height = \IGXMaxHeight,
         \IGXDefaultOptionalArgs,
     ] {tikzpics/endAbsLightControlSystem.pdf}
-    \captionof{figure} {}
-    \label{fig:}
+    \captionof{figure} {Interfacing of lights through auxiliary system's main board.}
+    \label{fig:lightInterface}
 \end{figure}
 
+Figure \ref{fig:lightInterface} shows the interfacing of these five light sources. They are
+done through the auxiliary system. One of the main board of the auxiliary system will be controling
+these five lights.
 
-\texttt{TODO: ADD BLOCK DIAGRAM}
+\alertWarning{
+    \texttt{P0}, \texttt{P1}, \texttt{P2}, \texttt{P3}, and \texttt{P4} of the main board
+    are temporary. We haven't decided the exact pins that are going to control these lights.
+}
 
 \end{document}
