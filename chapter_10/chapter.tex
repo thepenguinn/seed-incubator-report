@@ -13,7 +13,7 @@ task. Thus the \emph{birth} of \emph{Auxiliary system}.
 
 The sensory systems is mediated by two set of \emph{Analog multiplexers} which are
 \emph{serially} addressable\footnote{right now only one set is implemented.}. And the
-actuator systems are mediated by \emph{Shift register} boards. Following sections will
+actuator systems are mediated by \emph{shift register} boards. Following sections will
 take a deep dive into the design of each of these systems.
 
 \begin{figure}
@@ -27,9 +27,12 @@ take a deep dive into the design of each of these systems.
     \label{fig:emcuAuxilarySystem}
 \end{figure}
 
-As we can see from figure \ref{fig:emcuAuxilarySystem}, we can see that the sensors
+As we can see from figure \ref{fig:emcuAuxilarySystem}, the sensors
 and actuators are mediated by three types of boards, namely \textsc{Multiplexer Boards},
-\textsc{Relay Boards}, and \textsc{Main Boards}.
+\textsc{Relay Boards}, and \textsc{Main Boards}. Right now only one of the multiplexer board,
+and two of the relay boards are finished. This chapter goes through the design of those
+two types of boards. The main boards are similar to relay boards, but they are using a
+different type of shift register.
 
 %Buffer / Inverter%
 \subfile{section_01/section.tex}
