@@ -18,12 +18,43 @@ TinyML enables the deployment of machine learning models directly on microcontro
     \item \textbf{Output:} The model classifies the captured image into a growth stage category and sends results to the monitoring interface.
 \end{enumerate}
 
-\begin{figure}[H]
+\begin{figure}
     \centering
-    \includegraphics[width=0.85\textwidth]{example-image}
-    % \includegraphics[width=0.85\textwidth]{tinyml_workflow.png}
-    \caption{TinyML Workflow for GMU: Data Collection to Deployment}
+    \includegraphics [
+        width = 0.7\textwidth,
+        max width = \IGXMaxWidth,
+        max height = \IGXMaxHeight,
+        \IGXDefaultOptionalArgs,
+    ] {tikzpics/endAbsTinyMLWorkflow.pdf}
+    \captionof{figure} {TinyML Workflow for GMU: Data Collection to Deployment}
+    \label{fig:}
 \end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%
+%     \begin{tikzpicture}
+%
+%         \draw [
+%             thick,
+%             rounded corners = 0.3cm,
+%         ]
+%         (0, 0) coordinate (origin)
+%
+%         (2, 2) coordinate (origin)
+%
+%         (origin) rectangle ++(1, 1)
+%
+%         (0, 0) -- (2, 0)
+%         ;
+%
+%     \end{tikzpicture}
+%
+%     %
+%     % \includegraphics[width=0.85\textwidth]{example-image}
+%     % % \includegraphics[width=0.85\textwidth]{tinyml_workflow.png}
+%     \caption{TinyML Workflow for GMU: Data Collection to Deployment}
+% \end{figure}
 
 \subsection{Model Architecture Example}
 

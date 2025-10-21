@@ -41,6 +41,9 @@ return {
     ["endAbsThermalSensorSystem"] = {
         ["parent_dir"] = "chapter_05/section_05/tikzpics",
     },
+    ["endAbsTinyMLWorkflow"] = {
+        ["parent_dir"] = "gmu_02/tikzpics",
+    },
     ["endCADExhaustCMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
@@ -109,6 +112,9 @@ return {
     },
     ["subAbsThermalSensorSystem"] = {
         ["parent_dir"] = "chapter_05/section_05/tikzpics",
+    },
+    ["subAbsTinyMLWorkflow"] = {
+        ["parent_dir"] = "gmu_02/tikzpics",
     },
     ["subCADExhaustCMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",

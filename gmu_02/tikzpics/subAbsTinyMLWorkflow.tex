@@ -1,0 +1,84 @@
+\subtikzpicturedef{subAbsTinyMLWorkflow} {
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+
+    \subFigBase {#1-figBase} {#1-origin} {origin};
+
+    \draw
+    (#1-origin)
+
+    node (#1-s1) [
+        absTinyMLModule,
+    ] {
+        \ttfamily
+        DATA ACQUISITION STAGE -
+        LABELED IMAGES
+    }
+
+    node (#1-s2) [
+        absTinyMLModule,
+        right = of #1-s1,
+    ] {
+        \ttfamily
+        PREPROCESSING
+        RESIZE AND NORMALIZE
+    }
+
+    node (#1-s3) [
+        absTinyMLModule,
+        right = of #1-s2,
+    ] {
+        \ttfamily
+        MODEL TRAINING
+        CNN ARCHITECTURE
+    }
+
+    node (#1-s4) [
+        absTinyMLModule,
+        below = of #1-s3,
+    ] {
+        \ttfamily
+        CONVERSION AND QUANTIZATION
+        TO TFLITE FORMAT
+    }
+
+    node (#1-s5) [
+        absTinyMLModule,
+        left = of #1-s4,
+    ] {
+        \ttfamily
+        DEPLOYMENT LOADED ON TO ESP32 CAM
+    }
+
+    node (#1-s6) [
+        absTinyMLModule,
+        left = of #1-s5,
+    ] {
+        \ttfamily
+        INFERENCE LOCAL CLASSIFICATION
+    }
+
+    ;
+
+    \foreach \x/\y in {
+        s1/s2,
+        s2/s3,
+        s3/s4,
+        s4/s5,
+        s5/s6%
+
+    } {
+        \draw [
+            innerConnect,
+        ]
+        (#1-\x) -- (#1-\y)
+        ;
+    }
+
+
+    % \foreach \x/\y in
+
+}
+
+\subtikzpictureactivate{subAbsTinyMLWorkflow}
