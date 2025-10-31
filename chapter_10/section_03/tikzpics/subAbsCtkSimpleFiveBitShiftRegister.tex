@@ -1,5 +1,6 @@
 \def\absSimpleFiveBitSRPinCountTS{7}
 \def\absSimpleFiveBitSRPinCountLS{3}
+\def\absSimpleFiveBitSRTopPinGap{0.75}
 
 \subtikzpicturedef{subAbsCtkSimpleFiveBitShiftRegister} {
     addr, clk,
@@ -23,13 +24,13 @@
     }
 
     \draw
-    (#1-origin) ++(\absCtkPinPad, 0)
+    (#1-origin) ++({(\absCtkPinPad * 2)}, 0)
     coordinate (#1-tmp)
     ;
 
     \foreach \x in {1,...,\absSimpleFiveBitSRPinCountTS} {
         \draw [absCtkModule, line cap = round]
-        (#1-tmp) ++({(\x * \absCtkICPinGapComp)}, 0) coordinate (#1-t\x)
+        (#1-tmp) ++({((\x - 1)* \absSimpleFiveBitSRTopPinGap)}, 0) coordinate (#1-t\x)
         ;
     }
 
