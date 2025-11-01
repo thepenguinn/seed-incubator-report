@@ -11,13 +11,120 @@
     \subSixteenBitMux {#1-mux2} {#1-mux2} {r1}
 
     \draw
-    (#1-mux2-l12) ++(-3, 0) coordinate (#1-sreg)
+    (#1-mux2-southwest) ++(-9, 0) coordinate (#1-sreg)
     ;
-    \subAbsCtkSimpleFiveBitShiftRegister {#1-sreg} {#1-sreg} {qe}
+    \subAbsCtkSimpleFiveBitShiftRegister {#1-sreg} {#1-sreg} {southeast}
 
     \draw
-    (#1-sreg-qe) ++(0, 5)
-    node [not port, anchor = in] {}
+    (#1-sreg-qc |- #1-mux1-s0) ++(3.0, 0) coordinate (#1-n0)
+    (#1-sreg-qa |- #1-mux1-s2) ++(3.0, 0) coordinate (#1-n1)
+
+    (#1-sreg-qc |- #1-mux1-en) ++(3.0, 0) coordinate (#1-n2)
+
+    (#1-sreg-qa |- #1-mux1-l9) ++(3.0, 0) coordinate (#1-n3)
+    % node [not port, anchor = in] {}
+    ;
+
+    \subAbsNotPort {#1-n0} {#1-n0} {in}
+    \subAbsNotPort {#1-n1} {#1-n1} {in}
+    \subAbsNotPort {#1-n2} {#1-n2} {in}
+    \subAbsNotPort {#1-n3} {#1-n3} {in}
+
+    \foreach \start/\mid/\end in {
+        #1-sreg-qa/#1-sreg-qa |- #1-n0-in/#1-n0-in,
+        #1-sreg-qb/#1-sreg-qb |- #1-n1-in/#1-n1-in,
+        #1-sreg-qc/#1-sreg-qc |- #1-n2-in/#1-n2-in,
+        #1-sreg-qd/#1-sreg-qd |- #1-n3-in/#1-n3-in%
+    } {
+        \draw [absCtkInnerConnect]
+        (\start) -- (\mid) -- (\end)
+        ;
+    }
+
+    %% connection from n0
+
+    \draw [absCtkInnerConnect]
+    (#1-n0-out) -- (#1-mux1-s0)
+    ;
+
+    %% connection from n1
+
+    %% n1 to s1
+    \draw [absCtkInnerConnect]
+    (#1-n1-out -| #1-n0-out) coordinate (#1-n1Mux1Vert)
+    (#1-n1-out) -- (#1-n1Mux1Vert) -- (#1-n1Mux1Vert |- #1-mux1-s1) -- (#1-mux1-s1)
+    ;
+
+    %% marking n2 to s2
+    \draw
+    (#1-n1Mux1Vert) ++(\absCtkICPinGap, 0) coordinate (#1-n2Mux1Vert)
+    ;
+
+    %% drawing n2 to s2
+    \draw [absCtkInnerConnect]
+    (#1-n2-out) -- (#1-n2-out -| #1-n2Mux1Vert) -- (#1-n2Mux1Vert |- #1-mux1-s2) -- (#1-mux1-s2)
+    ;
+
+    %% marking n3 to s3
+    \draw
+    (#1-n2Mux1Vert) ++(\absCtkICPinGap, 0) coordinate (#1-n3Mux1Vert)
+    ;
+
+    %% drawing n3 to s3
+    \draw [absCtkInnerConnect]
+    (#1-n3-out) -- (#1-n3-out -| #1-n3Mux1Vert) -- (#1-n3Mux1Vert |- #1-mux1-s3) -- (#1-mux1-s3)
+    ;
+
+    %% to mux2
+
+    %% from n3
+
+    %% marking
+    \draw
+    (#1-n3Mux1Vert) ++(\absCtkICPinGap, 0) coordinate (#1-n3Mux2Vert)
+    ;
+
+    %% drawing
+    \draw [absCtkInnerConnect]
+    (#1-n3-out) -- (#1-n3-out -| #1-n3Mux2Vert) -- (#1-n3Mux2Vert |- #1-mux2-s3) -- (#1-mux2-s3)
+    ;
+
+    %% from n2
+
+    %% marking
+    \draw
+    (#1-n3Mux2Vert) ++(\absCtkICPinGap, 0) coordinate (#1-n2Mux2Vert)
+    ;
+
+    %% drawing
+    \draw [absCtkInnerConnect]
+    (#1-n2-out) -- (#1-n2-out -| #1-n2Mux1Vert) -- (#1-n2Mux1Vert |- #1-mux1-s2)
+    -- (#1-n2Mux2Vert |- #1-mux1-s2) -- (#1-n2Mux2Vert |- #1-mux2-s2) -- (#1-mux2-s2)
+    ;
+
+    %% from n1
+
+    %% marking
+    \draw
+    (#1-n2Mux2Vert) ++(\absCtkICPinGap, 0) coordinate (#1-n1Mux2Vert)
+    ;
+
+    %% drawing
+    \draw [absCtkInnerConnect]
+    (#1-n1-out) -- (#1-n1Mux1Vert) -- (#1-n1Mux1Vert |- #1-mux1-s1)
+    -- (#1-n1Mux2Vert |- #1-mux1-s1) -- (#1-n1Mux2Vert |- #1-mux2-s1) -- (#1-mux2-s1)
+    ;
+
+    %% from n0
+
+    %% marking
+    \draw
+    (#1-n1Mux2Vert) ++(\absCtkICPinGap, 0) coordinate (#1-n0Mux2Vert)
+    ;
+
+    %% drawing
+    \draw [absCtkInnerConnect]
+    (#1-n0-out) -- (#1-n0Mux2Vert |- #1-mux1-s0) -- (#1-n0Mux2Vert |- #1-mux2-s0) -- (#1-mux2-s0)
     ;
 
 }

@@ -1,0 +1,34 @@
+\def\absNotPortSideLength{1.25}
+\def\absNotPortBubbleRadius{4pt}
+
+\subtikzpicturedef{subAbsNotPort} {
+    in, out,
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+    \subAbsCtkDiagramBase {#1-absCtkDiagramBase} {#1-origin} {origin}
+
+    \draw [
+        absCtkModule,
+    ]
+    (#1-origin) coordinate (#1-out)
+    (#1-out) ++(-\absCtkPinPad, 0) coordinate (#1-right)
+
+    (#1-right) ++(150:\absNotPortSideLength) coordinate (#1-leftTop)
+    (#1-right) ++(-150:\absNotPortSideLength) coordinate (#1-leftBot)
+
+    (#1-right) -- (#1-leftTop) -- (#1-leftBot) -- cycle
+
+    (#1-out -| #1-leftTop) ++(-\absCtkPinPad, 0) coordinate (#1-in)
+    ;
+
+    \draw [
+        absCtkModule,
+        fill = bgcol,
+    ]
+    (#1-right) ++(-{\absNotPortBubbleRadius / 2}, 0) circle (\absNotPortBubbleRadius)
+    ;
+
+}
+
+\subtikzpictureactivate{subAbsNotPort}

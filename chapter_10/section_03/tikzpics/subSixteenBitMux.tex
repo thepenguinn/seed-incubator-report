@@ -2,6 +2,9 @@
 
 \subtikzpicturedef{subSixteenBitMux} {
     l1, l12, r1, r12, sig,
+    north, south, east, west,
+    northeast, northwest, southeast, southwest,
+    center,
     origin%
 } {
     \draw (#1-start) coordinate (#1-origin);
@@ -102,6 +105,15 @@
     \draw [absCtkModule, thin]
     (#1-l7) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{EN}}
     (#1-l7) coordinate (#1-en)
+    ;
+
+    %% marking geo coordinates
+    %% TODO: Fix this
+
+    \draw
+    \markgeocoordinate {#1}
+    {(#1-topLeft)} {(#1-bottomRight)}
+    {(#1-topLeft)} {(#1-bottomRight)}
     ;
 
 }

@@ -7,6 +7,9 @@
     l1, l2, l3,
     t1, t2, t3, t4, t5, t6, t7,
     qa, qb, qc, qd, qe,
+    north, south, east, west,
+    northeast, northwest, southeast, southwest,
+    center,
     origin%
 } {
     \draw (#1-start) coordinate (#1-origin);
@@ -71,6 +74,14 @@
 
     (#1-l3) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{ADDR}}
     (#1-l3) coordinate (#1-addr)
+    ;
+
+    %% marking geo coordinates
+
+    \draw
+    \markgeocoordinate {#1}
+    {(#1-qa)} {(#1-bottomRight)}
+    {(#1-clk)} {(#1-bottomRight)}
     ;
 
 }
