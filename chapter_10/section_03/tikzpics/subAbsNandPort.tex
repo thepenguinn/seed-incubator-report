@@ -1,0 +1,41 @@
+\def\absNandPortBaseHeight{1.4}
+\def\absNandPortBaseLength{0.75}
+\def\absNandPortBubbleRadius{4pt}
+
+\subtikzpicturedef{subAbsNandPort} {
+    in1, in2, out, inMid,
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+
+    \subAbsCtkDiagramBase {#1-absCtkDiagramBase} {#1-origin} {origin}
+
+    \draw
+    (#1-origin) ++(0, -3) coordinate (#1-in1)
+    ;
+
+    \draw [
+        absCtkModule,
+    ]
+    (#1-origin) -- ++(\absNandPortBaseLength, 0) arc (90:-90:\absNandPortBaseHeight / 2)
+    -- ++(-\absNandPortBaseLength, 0) -- cycle
+    ;
+
+    \draw [
+        absCtkModule,
+        fill = bgcol,
+    ]
+    (#1-origin) ++({\absNandPortBaseHeight / 2 + \absNandPortBaseLength}, -\absNandPortBaseHeight / 2)
+    ++(\absNandPortBubbleRadius, 0) circle (\absNandPortBubbleRadius)
+    ++(\absNandPortBubbleRadius, 0) ++(\absCtkPinPad, 0) coordinate (#1-out)
+    ;
+
+    \draw
+    (#1-origin) ++(-\absCtkPinPad, -{\absNandPortBaseHeight / 4}) coordinate (#1-in1)
+    (#1-origin) ++(-\absCtkPinPad, -{3 * \absNandPortBaseHeight / 4}) coordinate (#1-in2)
+    (#1-origin) ++(-\absCtkPinPad, -{\absNandPortBaseHeight / 2}) coordinate (#1-inMid)
+    ;
+
+}
+
+\subtikzpictureactivate{subAbsNandPort}

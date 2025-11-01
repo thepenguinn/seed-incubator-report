@@ -131,6 +131,9 @@ return {
     ["subAbsMuxTwo"] = {
         ["parent_dir"] = "tikzpics",
     },
+    ["subAbsNandPort"] = {
+        ["parent_dir"] = "chapter_10/section_03/tikzpics",
+    },
     ["subAbsNotPort"] = {
         ["parent_dir"] = "chapter_10/section_03/tikzpics",
     },
