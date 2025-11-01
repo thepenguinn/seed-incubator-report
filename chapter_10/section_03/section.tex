@@ -218,12 +218,12 @@ our design.
 
 \subsection{Putting It All Together}
 
-Now that we have sorted out all the components, we can put these all together to make
-our \emph{serially addressable $32$ bit multiplexer}. \texttt{QA} to \texttt{QD} are buffered using inverters and connected to the \texttt{S0} to \texttt{S3} of both the \emph{74HC4067}. The enable pins are tied together with NAND gates to \texttt{QE} pin.
-
-%Figure \ref{fig:absThirtyTwoBitMux}
-%
-%shows the abstract diagram of the internals of our multiplexer.
+Now that we have sorted out all the components, we can put all of these
+together to make our \emph{serially addressable $32$ bit multiplexer}.
+\texttt{QA} to \texttt{QD} are buffered and level shifted using inverters and
+connected to the address pins of both the \emph{74HC4067}s. The \texttt{EN} pins are
+tied together using some logic circuits to the \texttt{QE} pin. Refer figure
+\ref{fig:absThirtyTwoBitMux} for a detailed circuit diagram.
 
 \begin{figure}
    \centering
@@ -235,5 +235,11 @@ our \emph{serially addressable $32$ bit multiplexer}. \texttt{QA} to \texttt{QD}
    \captionof{figure} {Internals of the $32$ bit multiplexer.}
    \label{fig:absThirtyTwoBitMux}
 \end{figure}
+
+\alertNote{
+    Figure \ref{fig:absThirtyTwoBitMux} is only showing one of the multiplexer
+    units. The multiplexer board consists of two such circuits. Both will be
+    independent of each other.
+}
 
 \end{document}
