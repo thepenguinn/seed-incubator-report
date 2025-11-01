@@ -102,6 +102,9 @@
         ;
     }
 
+    %% TODO: EN is active low, so draw a bar above it.
+    %% \overline is not pretty, \= is perfect but doesn't stretch more
+    %% than a single character.
     \draw [absCtkModule, thin]
     (#1-l7) ++(\absCtkPinPad, 0) node [right = 4pt] {\texttt{EN}}
     (#1-l7) coordinate (#1-en)
