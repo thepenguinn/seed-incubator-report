@@ -178,6 +178,19 @@
     (#1-nd0-out) -- (#1-mux2-en)
     ;
 
+    \draw
+    (#1-muxEn2Vert) ++(\absCtkICPinGap, 0) coordinate (#1-rwVert)
+    (#1-rwVert |- #1-en) coordinate (#1-rw)
+    ;
+
+    \draw [absCtkInnerConnect]
+    (#1-mux1-rw) -- (#1-mux1-rw -| #1-rwVert) -- (#1-rw)
+    ;
+
+    \draw [absCtkInnerConnect]
+    (#1-mux2-rw) -- (#1-mux2-rw -| #1-rwVert) -- (#1-rw)
+    ;
+
     %% Labeling
 
     \draw [absCtkInnerConnect]
@@ -214,6 +227,15 @@
     node [
         below = 4pt,
     ] {\texttt{EN}}
+    ;
+
+    \draw [
+        absCtkModule,
+    ]
+    (#1-rw)
+    node [
+        below = 4pt,
+    ] {\texttt{RW}}
     ;
 
 }
