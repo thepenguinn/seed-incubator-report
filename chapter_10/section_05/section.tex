@@ -6,6 +6,22 @@
 
 \section{Main Board} \label{sec:}
 
+The relay board from the previous section will be used for controlling relays. We have actuators
+like lights, fans, and humidifiers. So we need another set of shift registers to control them. If
+we use \emph{74LS95} here, the lack of an extra storage latch will cause the lights to flicker
+as we shift through serial data. So we need a shift register with storage latches. We can pick
+\emph{74HC595} for this use case. Refer figures \ref{fig:74hc595Dip} and \ref{fig:74hc595PinDiagram}
+for more info about the IC. And table \ref{tbl:74hc595RelventPins} goes through the pins of
+\emph{74HC595}.
+
+\alertImportant{
+    \emph{74HC595} is a CMOS version of the chip. Inorder to drive them from \esp we need some
+    kind of level shifters as the logic high voltage of the \esp will be too low for \emph{74HC595}
+    to register as logic high. We can simply use some inverters discussed in the previous sections
+    for this purpose. Since we are using inverters as buffers, we need to flip the bits from
+    the software to actually shift in the right bits we want.
+}
+
 \begin{center}
     {\begin{minipage}[c] {0.35\textwidth}
         \centering
@@ -57,6 +73,11 @@
 
 \end{center}
 
+\subsection{Building a 24 Bit Shift Register}
+
+The only difference from the previous relay board system is that there will be an
+extra clock line for the storage latches from the \esp. Refer figure \ref{fig:absTwentyFourBitShiftRegister}
+for the circuit diagram.
 
 \begin{figure}
     \centering
