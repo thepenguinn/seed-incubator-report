@@ -6,6 +6,37 @@
 
 \section{Soil Moisture Sensing} \label{sec:}
 
+\begin{center}
+    {\begin{minipage} [c] {0.55\textwidth}
+
+        Soil moisture sensing is done using resistive soil moisture sensors.
+        The soil moisture content then can be estimated by appropriately
+        scaling the voltage read from the sensors. The multiplexer board is
+        used to interface between the sensors and the \esp. See figure
+        \ref{fig:soilMoistureSensor} for the sensor used.
+
+        Specification:
+
+        \begin{itemize}
+            \item \textbf{Operating voltage:} $3.3\si{V}$ to $5\si{V}$.
+        \end{itemize}
+
+    \end{minipage}
+    \hfill
+    \begin{minipage} [c] {0.35\textwidth}
+        \centering
+        \includegraphics [
+            max width = \IGXMaxWidth,
+            max height = \IGXMaxHeight,
+            \IGXDefaultOptionalArgs,
+        ] {pics/soil_moisture_sensor.png}
+        \captionof{figure} {
+            Soil moisture sensor.
+            \label{fig:soilMoistureSensor}
+        }
+    \end{minipage}\hfill}
+\end{center}
+
 \subsection{Interfacing}
 
 \begin{figure}
@@ -15,7 +46,7 @@
         max height = \IGXMaxHeight,
         \IGXDefaultOptionalArgs,
     ] {tikzpics/endAbsSoilMoistureSensing.pdf}
-    \captionof{figure} {Interfacing of piezoelectric humidifier modules.}
+    \captionof{figure} {Interfacing of soil moisture sensors.}
     \label{fig:absHumidifierSystem}
 \end{figure}
 
