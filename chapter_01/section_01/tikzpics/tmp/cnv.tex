@@ -1,0 +1,35 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{graphicx}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+    \begin{scope}
+        \clip
+        node (img) [inner sep = 0pt, anchor = center] {
+            \includegraphics{in.pdf}
+        }
+        ;
+    \end{scope}
+
+    \filldraw [
+        rounded corners = 0.75cm,
+        white,
+    ]
+    (img.north west) ++(-1, 1) coordinate (topleft)
+    (img.south east) ++(1, -1) coordinate (botright)
+
+    (topleft) rectangle (botright)
+    ;
+
+    \draw
+    node (img) [inner sep = 0pt, anchor = center] {
+        \includegraphics{in.pdf}
+    }
+    ;
+
+\end{tikzpicture}
+
+\end{document}
