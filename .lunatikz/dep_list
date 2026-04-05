@@ -29,6 +29,9 @@ return {
     ["endAbsMainFour"] = {
         ["parent_dir"] = "tikzpics",
     },
+    ["endAbsMuxSix"] = {
+        ["parent_dir"] = "tikzpics",
+    },
     ["endAbsMuxTwo"] = {
         ["parent_dir"] = "tikzpics",
     },
@@ -43,6 +46,9 @@ return {
     },
     ["endAbsSixteenBitShiftRegister"] = {
         ["parent_dir"] = "chapter_10/section_04/tikzpics",
+    },
+    ["endAbsSoilMoistureSensing"] = {
+        ["parent_dir"] = "chapter_12/section_01/tikzpics",
     },
     ["endAbsSubsystems"] = {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",
@@ -128,6 +134,9 @@ return {
     ["subAbsMainFour"] = {
         ["parent_dir"] = "tikzpics",
     },
+    ["subAbsMuxSix"] = {
+        ["parent_dir"] = "tikzpics",
+    },
     ["subAbsMuxTwo"] = {
         ["parent_dir"] = "tikzpics",
     },
@@ -148,6 +157,9 @@ return {
     },
     ["subAbsSixteenBitShiftRegister"] = {
         ["parent_dir"] = "chapter_10/section_04/tikzpics",
+    },
+    ["subAbsSoilMoistureSensing"] = {
+        ["parent_dir"] = "chapter_12/section_01/tikzpics",
     },
     ["subAbsSubsystems"] = {
         ["parent_dir"] = "chapter_01/section_02/tikzpics",

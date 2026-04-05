@@ -1,0 +1,71 @@
+\def\absMuxSixWidth{3}
+\def\absMuxSixHeight{8}
+
+\subtikzpicturedef{subAbsMuxSix} {
+    l0, l1, l2, l3,
+    r0, r1, r2, r3,
+    b0, b1, b2,
+    north, south, east, west,
+    northeast, northwest, southeast, southwest,
+    center,
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+    \subAbsCtkDiagramBase {#1-absCtkDiagramBase} {#1-origin} {origin}
+
+    \draw [absCtkAuxModule]
+    (#1-origin) coordinate (#1-bottomLeftCorner)
+    (#1-bottomLeftCorner) ++(\absMuxSixWidth, \absMuxSixHeight)
+    coordinate (#1-topRightCorner)
+
+    \markgeocoordinate {#1}
+    {(#1-topRightCorner)} {(#1-bottomLeftCorner)}
+    {(#1-bottomLeftCorner)} {(#1-topRightCorner)}
+
+    (#1-northwest) ++(-\absCtkPinPad, 0)
+    ++(0, -{\absMuxSixHeight / 12}) coordinate (#1-l0)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-l1)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-l2)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-l3)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-l4)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-l5)
+
+    (#1-northeast) ++(\absCtkPinPad, 0)
+    ++(0, -{\absMuxSixHeight / 12}) coordinate (#1-r0)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-r1)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-r2)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-r3)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-r4)
+    ++(0, -{\absMuxSixHeight / 6}) coordinate (#1-r5)
+
+    (#1-southwest) ++(0.5, -\absCtkPinPad)
+    coordinate (#1-b0)
+    ++(0.5, 0) coordinate (#1-b1)
+    ++(0.5, 0) coordinate (#1-b2)
+
+    % (#1-northeast) ++(\absCtkPinPad, -0.5)
+    % coordinate (#1-r0)
+
+    (#1-bottomLeftCorner) rectangle (#1-topRightCorner)
+
+    (#1-center) coordinate (#1-mainCenter)
+
+    \markgeocoordinate {#1}
+    {(#1-north)} {(#1-b0)}
+    {(#1-l0)} {(#1-r0)}
+
+    ;
+}
+
+\subtikzpictureactivate{subAbsMuxSix}
+
+%% subtikzname mainname
+\newcommand\ovrAbsMuxDrawLabelName[2] {
+    \draw [absCtkModule]
+    (#1-mainCenter)
+    node [
+        inner sep = 0pt,
+        anchor = center,
+    ] {\ttfamily #2}
+    ;
+}
