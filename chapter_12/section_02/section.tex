@@ -6,7 +6,52 @@
 
 \section{Water and Fertilizer Delivery} \label{sec:}
 
-Water and fertilizer delivery is done using a drip mechanism. Two separate water
-pumps are used to properly irrigate the saplings.
+\begin{center}
+    {\begin{minipage} [c] {0.55\textwidth}
+
+        Water and fertilizer delivery is done using a drip mechanism. Two
+        separate water pumps are used to properly irrigate the saplings. One
+        for water and one for fertilizers. See figure
+
+        Specification:
+
+        \begin{itemize}
+            \item \textbf{Operating voltage:} $12\si{V}$.
+            \item \textbf{Lift Height:} $1.5\si{m}$ to $2\si{m}$.
+        \end{itemize}
+
+    \end{minipage}
+    \hfill
+    \begin{minipage} [c] {0.35\textwidth}
+        \centering
+        \includegraphics [
+            max width = \IGXMaxWidth,
+            max height = \IGXMaxHeight,
+            \IGXDefaultOptionalArgs,
+            trim = {0cm 3.5cm 0cm 3.5cm},
+            clip,
+        ] {pics/water_pump.png}
+        \captionof{figure} {
+            R385 water pump used.
+            \label{fig:waterPump}
+        }
+    \end{minipage}\hfill}
+\end{center}
+
+\subsection{Interfacing}
+
+Interfacing of these motors are done by the relay board.
+
+\begin{figure}
+    \centering
+    \includegraphics [
+        max width = \IGXMaxWidth,
+        max height = \IGXMaxHeight,
+        \IGXDefaultOptionalArgs,
+    ] {tikzpics/endAbsWaterPump.pdf}
+    \captionof{figure} {Interfacing of water pumps through relay board.}
+    \label{fig:absWaterPump}
+\end{figure}
+
 
 \end{document}

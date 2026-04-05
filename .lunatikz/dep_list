@@ -65,6 +65,9 @@ return {
     ["endAbsTinyMLWorkflow"] = {
         ["parent_dir"] = "gmu_02/tikzpics",
     },
+    ["endAbsWaterPump"] = {
+        ["parent_dir"] = "chapter_12/section_02/tikzpics",
+    },
     ["endCADExhaustCMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
     },
@@ -175,6 +178,9 @@ return {
     },
     ["subAbsTinyMLWorkflow"] = {
         ["parent_dir"] = "gmu_02/tikzpics",
+    },
+    ["subAbsWaterPump"] = {
+        ["parent_dir"] = "chapter_12/section_02/tikzpics",
     },
     ["subCADExhaustCMODE"] = {
         ["parent_dir"] = "chapter_05/section_01/tikzpics",
