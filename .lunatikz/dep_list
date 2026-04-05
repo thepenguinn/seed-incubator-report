@@ -68,6 +68,9 @@ return {
     ["endAbsTinyMLWorkflow"] = {
         ["parent_dir"] = "gmu_02/tikzpics",
     },
+    ["endAbsTwentyFourBitShiftRegister"] = {
+        ["parent_dir"] = "chapter_10/section_05/tikzpics",
+    },
     ["endAbsWaterPump"] = {
         ["parent_dir"] = "chapter_12/section_02/tikzpics",
     },
@@ -109,6 +112,9 @@ return {
     },
     ["subAbsCtkDiagramBase"] = {
         ["parent_dir"] = "tikzpics",
+    },
+    ["subAbsCtkSimpleEightBitShiftRegister"] = {
+        ["parent_dir"] = "chapter_10/section_05/tikzpics",
     },
     ["subAbsCtkSimpleFiveBitShiftRegister"] = {
         ["parent_dir"] = "chapter_10/section_03/tikzpics",
@@ -184,6 +190,9 @@ return {
     },
     ["subAbsTinyMLWorkflow"] = {
         ["parent_dir"] = "gmu_02/tikzpics",
+    },
+    ["subAbsTwentyFourBitShiftRegister"] = {
+        ["parent_dir"] = "chapter_10/section_05/tikzpics",
     },
     ["subAbsWaterPump"] = {
         ["parent_dir"] = "chapter_12/section_02/tikzpics",

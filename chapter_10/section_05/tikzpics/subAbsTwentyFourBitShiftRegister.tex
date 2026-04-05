@@ -1,0 +1,129 @@
+\subtikzpicturedef{subAbsTwentyFourBitShiftRegister} {
+    origin%
+} {
+    \draw (#1-start) coordinate (#1-origin);
+    \subAbsCtkDiagramBase {#1-absCtkDiagramBase} {#1-origin} {origin}
+
+    \draw
+    (#1-origin) coordinate (#1-esp)
+    ;
+    \subAbsESP {#1-esp} {#1-esp} {origin}
+
+    %% srs
+    \draw
+    (#1-esp-r4) ++(2, 0) coordinate (#1-sr1)
+    ;
+    \subAbsCtkSimpleEightBitShiftRegister {#1-sr1} {#1-sr1} {clk}
+
+    \draw
+    (#1-sr1-clk -| #1-sr1-topRight) ++(2, 0) coordinate (#1-sr2)
+    ;
+    \subAbsCtkSimpleEightBitShiftRegister {#1-sr2} {#1-sr2} {clk}
+
+    \draw
+    (#1-sr2-clk -| #1-sr2-topRight) ++(2, 0) coordinate (#1-sr3)
+    ;
+    \subAbsCtkSimpleEightBitShiftRegister {#1-sr3} {#1-sr3} {clk}
+
+    %% connection
+
+    \foreach \start/\stop in {
+        #1-sr1/#1-sr2,
+        #1-sr2/#1-sr3%
+    } {
+        \draw [
+            absCtkInnerConnection,
+        ]
+        ($(\start-topRight)!0.50!(\stop-topLeft)$) coordinate (#1-mid)
+        (\start-q7) ++(0, 0.5)  coordinate (#1-tmp)
+
+        (\start-q7)
+        -- (#1-tmp)
+        -- (#1-tmp -| #1-mid)
+        -- (\stop-data -| #1-mid)
+        -- (\stop-data)
+        ;
+    }
+
+    \foreach \start/\stop in {
+        #1-esp-r4/#1-sr2,
+        #1-esp-r4/#1-sr3%
+    } {
+        \draw [
+            absCtkInnerConnection,
+        ]
+        ($(\stop-pclk)-(\stop-clk)$) coordinate (#1-move)
+        (\stop-pclk) ++(#1-move) coordinate (#1-tmpBend)
+        (#1-sr1-pclk) ++(0, -2) coordinate (#1-tmp)
+        (\start)
+        -- (#1-sr1-pclk)
+        -- (#1-tmp)
+        -- (#1-tmp -| #1-tmpBend)
+        -- (#1-tmpBend)
+        -- (\stop-clk)
+        ;
+    }
+
+    \foreach \start/\stop in {
+        #1-esp-r5/#1-sr2,
+        #1-esp-r5/#1-sr3%
+    } {
+        \draw [
+            absCtkInnerConnection,
+        ]
+        ($(#1-sr1-prclk)-(#1-sr1-rclk)$) coordinate (#1-move)
+        (#1-sr1-prclk) ++(#1-move) coordinate (#1-tmpBend)
+        (#1-tmpBend) ++(0, -2) coordinate (#1-tmp)
+        (\start)
+        -- (#1-tmpBend)
+        -- (#1-tmp)
+        -- (#1-tmp -| \stop-prclk)
+        -- (\stop-prclk)
+        -- (\stop-rclk)
+        ;
+    }
+
+    %% from esp
+
+    \draw [
+        absCtkInnerConnection,
+    ]
+    (#1-esp-r4)
+    -- (#1-sr1-clk)
+    ;
+
+    \draw [
+        absCtkInnerConnection,
+    ]
+    (#1-esp-r3)
+    -- (#1-sr1-data)
+    ;
+
+    \ovrAbsESPDrawLabelName {#1-esp} {\texttt{ESP32}}
+
+    %% label
+
+    % \draw [absCtkModule, thin]
+    % (#1-esp-r4) ++(-\absCtkPinPad, 0) node [left = 4pt] {\texttt{D27}}
+    % (#1-esp-r3) ++(-\absCtkPinPad, 0) node [left = 4pt] {\texttt{D14}}
+    % ;
+
+    %%
+
+    \foreach \x in {
+        #1-sr1,
+        #1-sr2,
+        #1-sr3%
+    } {
+        \foreach \y in {0,...,7} {
+            \draw [
+                absCtkInnerConnection,
+            ]
+            (\x-q\y) -- ++(0, 1.25)
+            ;
+        }
+    }
+
+}
+
+\subtikzpictureactivate{subAbsTwentyFourBitShiftRegister}
